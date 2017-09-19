@@ -33,9 +33,9 @@
 <!-- ##Deployment## -->		
 	<target name="gmailDeploy">
 		<sf:deploy 
-			username="${sf.gmail.username}"
-			password="${sf.gmail.password}" 
-			serverurl="${sf.serverurl}" 
+			username="${SALESFORCE_USERNAME}"
+			password="${SALESFORCE_PASSWORD}" 
+			serverurl="${SALESFORCE_URL}" 
 			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src\"
 			autoUpdatePackage="true"
 			checkOnly="false"
