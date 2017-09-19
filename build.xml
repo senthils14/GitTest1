@@ -1,0 +1,178 @@
+<project name="Sample usage of Salesforce Ant tasks" default="gmailValidation" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="C:\Study\ANT\build.properties"/>
+    <property environment="env"/>
+	
+	
+<!-- ##########  My ORG Gamil ########## -->	
+<!-- ##Retrieve## -->	
+	<target name="gmailRetrieve">
+		<sf:retrieve 
+			username="${sf.gmail.username}"
+			password="${sf.gmail.password}" 
+			serverurl="${sf.serverurl}" 
+			retrieveTarget="C:\Study\Backup" 
+			unpackaged="C:\Study\Backup\package.xml"/>
+    </target>
+<!-- ##Validation## -->		
+	<target name="gmailValidation">
+		<sf:deploy 
+			username="${sf.gmail.username}"
+			password="${sf.gmail.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src\"
+			autoUpdatePackage="true"
+			checkOnly="true"
+			runAllTests="false"
+			rollbackOnError="true"/>
+    </target>
+<!-- ##Deployment## -->		
+	<target name="gmailR8Deploy">
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src"
+			autoUpdatePackage="true"
+			checkOnly="false"
+			runAllTests="false"
+			rollbackOnError="true"/>
+    </target>
+<!-- ##Validation&Deployment## -->	
+	<target name="gmailValidationAndDeploy">
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:/ABB/Deploy/R6/Increment_11032016/"			
+			autoUpdatePackage="true"
+			checkOnly="true"
+			runAllTests="false"
+			rollbackOnError="true"/>
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:/ABB/Deploy/R6/Increment_11032016/"			
+			autoUpdatePackage="true"
+			checkOnly="false"
+			runAllTests="false"
+			rollbackOnError="true"/>	
+    </target>	
+
+<!-- ##########  ABB GBSR8 ORG - R8 Dev Org  ########## -->	
+<!-- ##Retrieve## -->	
+	<target name="ABBTest1234Retrieve">
+		<sf:retrieve 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			retrieveTarget="C:\ABB\STS_R8_Validation\05SEP2017\Profile\" 
+			unpackaged="C:\ABB\STS_R8_Validation\05SEP2017\Profile\package.xml"/>
+    </target>
+<!-- ##Validation## -->		
+	<target name="ABBTest1234Validation">
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\ABB\Prod_Package\2017-08-21_ACR-C190631_ABB_Maintenance_7.1.2\src\"			
+			autoUpdatePackage="true"
+			checkOnly="true"
+			runAllTests="false"
+			rollbackOnError="true"/>
+    </target>
+<!-- ##Deployment## -->		
+	<target name="ABBTest1234Deploy">
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\ABB\Prod_Package\2017-08-21_ACR-C190631_ABB_Maintenance_7.1.2\src\"			
+			autoUpdatePackage="true"
+			checkOnly="false"
+			runAllTests="false"
+			rollbackOnError="true"/>
+    </target>
+<!-- ##Validation&Deployment## -->	
+	<target name="ABBTest1234ValidationAndDeploy">
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:/ABB/Deploy/R6/Increment_11032016/"			
+			autoUpdatePackage="true"
+			checkOnly="true"
+			runAllTests="false"
+			rollbackOnError="true"/>
+		<sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:/ABB/Deploy/R6/Increment_11032016/"			
+			autoUpdatePackage="true"
+			checkOnly="false"
+			runAllTests="false"
+			rollbackOnError="true"/>	
+    </target>	
+	
+	
+		<target name="ABBTestValidation1">
+	    <sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\ABB\Checking\EP_PROD_Package_06_SEP_20171\"			
+			autoUpdatePackage="true"
+			checkOnly="true"
+			testLevel="RunLocalTests"
+			rollbackOnError="true"/>
+    </target>
+	
+		<!-- ##Subset Test Class Validation## -->	
+		<target name="ABBSubsetTestValidation">
+	    <sf:deploy 
+			username="${sf.Test1234.username}"
+			password="${sf.Test1234.password}" 
+			serverurl="${sf.serverurl}" 
+			deployRoot="C:\ABB\STSR7B\17JUL2017\Package_from_Sumit\R7b_Package_II\"			
+			autoUpdatePackage="true"
+			checkOnly="true"
+			testLevel="RunSpecifiedTests">
+			    <runTest>CommunitiesLandingControllerTest</runTest>
+				<runTest>CommunitiesLoginControllerTest</runTest>
+				<runTest>CommunitiesSelfRegConfirmControllerTest</runTest>
+				<runTest>CommunitiesSelfRegControllerTest</runTest>
+			</sf:deploy>	
+    </target>
+
+		<!-- ##ANT Learning## -->
+		<target name="info">
+			<echo>Hello World - Welcome to Apache Ant! ${ant.project.invoked-targets}, ${ant.core.lib},  ${ant.home}, ${ant.library.dir}</echo>
+		</target>
+
+<target name="cancel">
+  <sf:cancelDeploy username="${sf.Test1234.username}" password="${sf.Test1234.password}"
+      serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}"
+      requestId="0Af4E00000IXNZ7"/>
+</target>
+	
+	
+	<target name="DM">
+	<sf:describeMetadata username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}"/>
+	</target>
+	<macrodef name="git">
+		<attribute name="command" />
+		<attribute name="dir" />
+		<element name="args" optional="true" />
+		<sequential>
+            <echo message="Executing Command in folder @{dir}" />
+            <echo message="git @{command}" />
+			<exec executable="git" dir="@{dir}">
+				<arg value="@{command}" />
+				<args/>
+			</exec>
+		</sequential>
+	</macrodef>
+    <!--			testLevel="RunLocalTests" -->
+</project>
