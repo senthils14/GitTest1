@@ -1,6 +1,10 @@
 <project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
 
-    <property file="C:\Study\ANT\build.properties"/>
+    <!--property file="C:\Study\ANT\build.properties"/-->
+	<property file="build.properties"/>
+	<property name="SALESFORCE_USERNAME" value="$(env.SALESFORCE_USERNAME)"/>
+	<property name="SALESFORCE_PASSWORD" value="$(env.SALESFORCE_PASSWORD)"/>
+	<property name="SALESFORCE_URL" value="$(env.SALESFORCE_URL)"/>
     <property environment="env"/>
 	
 	
@@ -17,9 +21,9 @@
 <!-- ##Validation## -->		
 	<target name="gmailValidation">
 		<sf:deploy 
-			username="${sf.gmail.username}"
-			password="${sf.gmail.password}" 
-			serverurl="${sf.serverurl}" 
+			username="${SALESFORCE_USERNAME}"
+			password="${SALESFORCE_PASSWORD}" 
+			serverurl="${SALESFORCE_URL}" 
 			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src\"
 			autoUpdatePackage="true"
 			checkOnly="true"
