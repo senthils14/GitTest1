@@ -27,12 +27,12 @@
 			rollbackOnError="true"/>
     </target>
 <!-- ##Deployment## -->		
-	<target name="gmailR8Deploy">
+	<target name="gmailDeploy">
 		<sf:deploy 
-			username="${sf.Test1234.username}"
-			password="${sf.Test1234.password}" 
+			username="${sf.gmail.username}"
+			password="${sf.gmail.password}" 
 			serverurl="${sf.serverurl}" 
-			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src"
+			deployRoot="C:\Program Files (x86)\Jenkins\workspace\Testing2\src\"
 			autoUpdatePackage="true"
 			checkOnly="false"
 			runAllTests="false"
