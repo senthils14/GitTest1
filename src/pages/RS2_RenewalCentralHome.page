@@ -1,0 +1,13 @@
+<apex:page showheader="false" sidebar="false" >
+            
+    <div id="container">
+        <c:RS2_RenewalHeader activeTab="Home" />
+        <div class="wide" id = "content-container" >
+        <!--
+            <apex:include pageName="TaskList"/>
+          -->
+         </div>
+        <!-- <c:RS2_RenewalFooter />    -->
+    </div>
+    
+</apex:page>

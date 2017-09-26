@@ -1,0 +1,28 @@
+<apex:page controller="soql_offset_example" showHeader="false" sidebar="false" readOnly="true" cache="true">
+
+<apex:pageBlock >   
+    <apex:pageBlockButtons location="top" >
+    <apex:outputPanel id="myButtons">
+    <apex:form >
+        <apex:commandButton action="{!Beginning}" title="Beginning" value="<<" disabled="{!disablePrevious}" reRender="myPanel,myButtons"/>
+        <apex:commandButton action="{!Previous}" title="Previous" value="<" disabled="{!disablePrevious}" reRender="myPanel,myButtons"/>        
+        <apex:commandButton action="{!Next}" title="Next" value=">" disabled="{!disableNext}" reRender="myPanel,myButtons"/>
+        <apex:commandButton action="{!End}" title="End" value=">>" disabled="{!disableNext}" reRender="myPanel,myButtons"/>        
+    </apex:form>
+    </apex:outputPanel>
+    </apex:pageBlockButtons>
+    
+    <apex:pageBlockSection title="Numbers and their Square Roots (Total List Size: {!total_size})" collapsible="false">
+    <apex:outputPanel id="myPanel">
+    <apex:pageMessages id="theMessages" />
+    <apex:pageBlockTable value="{!numbers}" var="n" align="left">
+        <apex:column value="{!n.Number__c}" />
+        <apex:column value="{!n.Square_root__c}" />
+        <apex:facet name="footer">Showing Page # {!pageNumber} of {!totalPages}</apex:facet>
+    </apex:pageBlockTable>
+    </apex:outputPanel>
+    </apex:pageBlockSection>
+
+</apex:pageBlock>
+    
+</apex:page>

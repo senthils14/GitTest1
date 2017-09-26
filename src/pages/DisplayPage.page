@@ -1,0 +1,97 @@
+<apex:page Controller="DisplayUserinfo"  sidebar="false">
+    <apex:pageblock title="User info">        
+        <apex:pageblocktable value="{!Userinfo}" var="u" columns="4">
+            <apex:column headerValue="User Id">
+                <apex:outputLink value="/{!u.id}" id="Userlink" target="_blank">{!u.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="User Name">
+                <apex:outputfield value="{!u.Name}"/>
+            </apex:column>
+            <apex:column headerValue="isActive?">
+                <apex:outputfield value="{!u.IsActive}"/>
+            </apex:column>
+            <apex:column headerValue="Phone">
+                <apex:outputfield value="{!u.Phone}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+    
+    <apex:pageblock title="Role info" rendered="{!displayrole}">        
+        <apex:pageblocktable value="{!UserRoleInfo}" var="ur" columns="4">
+            <apex:column headerValue="Role Id">
+                <apex:outputLink value="/{!ur.id}" id="RoleLink" target="_blank">{!ur.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Role Name">
+                <apex:outputfield value="{!ur.Name}"/>
+            </apex:column>
+            <apex:column headerValue="Description">
+                <apex:outputfield value="{!ur.RollupDescription}"/>
+            </apex:column>
+            <apex:column headerValue="PortalType">
+                <apex:outputfield value="{!ur.PortalType}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+
+    <apex:pageblock title="Profile info">        
+        <apex:pageblocktable value="{!UserProfileInfo}" var="up" columns="4">
+            <apex:column headerValue="Profile Id">
+                <apex:outputLink value="/{!up.id}" id="ProfileLink" target="_blank">{!up.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Profile Name">
+                <apex:outputfield value="{!up.Name}"/>
+            </apex:column>
+            <apex:column headerValue="Description">
+                <apex:outputfield value="{!up.Description }"/>
+            </apex:column>
+            <apex:column headerValue="UserLicenseId">
+                <apex:outputfield value="{!up.UserLicenseId}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+    
+    <apex:pageblock title="Group Info-level1">
+        <apex:pageblocktable value="{!groupids1}" var="a" rendered="{!displaygrouplevel1}" columns="2">
+            <apex:column headerValue="Group Id">
+                <apex:outputLink value="/setup/own/groupdetail.jsp?id={!a.id}&setupid=PublicGroups" id="Group1Link" target="_blank">{!a.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Group Name">
+                <apex:outputfield value="{!a.name}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+    
+    <apex:pageblock title="Group Info-level2">
+        <apex:pageblocktable value="{!groupids2}" var="b" rendered="{!displaygrouplevel2}" columns="2">
+            <apex:column headerValue="Group Id">
+                <apex:outputLink value="/setup/own/groupdetail.jsp?id={!b.id}&setupid=PublicGroups" id="Group2Link" target="_blank">{!b.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Group Name">
+                <apex:outputfield value="{!b.name}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+    
+    <apex:pageblock title="Group Info-level3">
+        <apex:pageblocktable value="{!groupids3}" var="c" rendered="{!displaygrouplevel3}" columns="2">
+            <apex:column headerValue="Group Id">
+                <apex:outputLink value="/setup/own/groupdetail.jsp?id={!c.id}&setupid=PublicGroups" id="Group3Link" target="_blank">{!c.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Group Name">
+                <apex:outputfield value="{!c.name}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>
+    
+     <apex:pageblock title="Queue - Info">
+        <apex:pageblocktable value="{!Queue1}" var="d" rendered="{!displayQueue1}" columns="2">
+            <apex:column headerValue="Queue Id">
+                <apex:outputLink value="/p/own/Queue/d?id={!d.id}&setupid=Queues" id="Queue1Link" target="_blank">{!d.Id}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="Queue Name">
+                <apex:outputfield value="{!d.name}"/>
+            </apex:column>
+        </apex:pageblocktable>
+    </apex:pageblock>   
+
+</apex:page>

@@ -1,0 +1,107 @@
+<apex:component controller="RS2_URLRedirectController" >
+
+<apex:attribute name="activeTab" type="string" description="test" />
+<!--<apex:includeScript value="{!$Resource.library_framework}"/>  
+<apex:includeScript value="{!$Resource.s_define}"/>
+<apex:includeScript value="{!$Resource.jQuery}"/>
+<apex:includeScript value="{!$Resource.jQuery}"/>
+<apex:includeScript value="{!URLFOR($Resource.VMStarResources,'VMStar.js')}"/>
+<apex:stylesheet value="{!URLFOR($Resource.VMStarResources,'VMStar.css')}" /> -->
+
+<!--<script src="http://www.vmware.com/app/template/" type="text/javascript"></script>
+<apex:includeScript value="{!URLFOR($Resource.VMwareStyle, 'template.js')}"/>-->
+<script type="text/javascript">
+    $(document).ready(function(){
+    <!--    var dcpnFavicon="{!URLFOR($Resource.VMStarResources,'images/favicon.ico')}";  -->
+        var tabSelector = "{!activeTab}";
+        //Favicon addition
+        $("head").append('<link rel="shortcut icon" href="'+dcpnFavicon+'" type="image/x-icon" />');
+        //Active Tab Functionality
+        $("#top-of-page div.nav ul li a").each(function(){
+            var $this=$(this);
+            if(tabSelector==$this.attr("id")){
+                $this.addClass("active-tab");
+            }
+        });
+    });
+</script>
+
+<div class= "headerwrapper">
+   <div id="top-of-page">
+        <div id="global-sites">  
+            <div class="dcpnNewLogo"></div>
+            <div class="ad-nav">
+                <div class="ad-nav-controls">
+                    <div class="usrnmDisplay">
+                        <p><span>{!$User.FirstName} {!$User.LastName}</span></p>
+                    </div>
+                    <div class="loginArea">
+                        <a href="/secur/logout.jsp">
+                            <input type="button" class="newVmBtn" value="Log Out"></input>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="menu-search">
+                <div class="flexsearch">
+                    <div class="flexsearch--wrapper">
+                        <form action="/SearchPageResults" name="frmSearchGLOBAL" method="get" class="flexsearch--form" id="globalsearch">
+                            <fieldset>
+                                <input type="hidden" class="currActiveTab" value="" name="currTabSelector"></input>
+                                <div class="flexsearch--input-wrapper">
+                                    <input type="search" placeholder="Search" class="flexsearch--input" name="q"></input>
+                                </div>
+                                <input type="submit" class="flexsearch--submit" value="Submit"></input>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="devCenterCont">
+               <a href="#"><span></span></a>
+            </div>
+        </div>
+        <!--  div to embed the VMware logo and the "DCPN" text -->
+        <div class="vmwarelogo">
+            <a class=" internal" target="_self" href="#" title="VMware Renewal Central">RENEWALS CENTRAL</a>
+            <!--<img alt="Beta" src="data:image/gif;base64,R0lGODlhGwAJAKIAAAAAAP////eMAMZwAPeOBf///wAAAAAAACH5BAEAAAUALAAAAAAbAAkAAAM8WFrS/jCKxaS16oU9xA7D13FP5YBhOowrCl5iSL7f25iNq7Je2924mKhHtE0yjdVKoOwsn78jkkC4XAoJADs="></img>-->
+        </div>
+        <!--  div to embed the tabbed application menu for DCPN(still needs work) -->
+        <div class = "nav">
+            <ul>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="Summary">Summary</a>
+                </li>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="QuaterList">Quater List</a>
+                </li>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="QuoteSearch">Quote Search</a>
+                </li>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="MyQueue">My Queue</a>
+                </li>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="Help">Help</a>
+                </li>
+                <li>
+                    <a target="_self" class = "menu-item-primary-1" href="#" id="ProactiveQuote">Proactive Quote</a>
+                </li>
+            </ul>
+        </div>
+        <apex:form >
+            <apex:actionFunction name="toHomeTab" action="{!toHomeTab}" />
+            <apex:actionFunction name="toProjectsTab" action="{!toProjectsTab}" />
+            <apex:actionFunction name="toCasesTab" action="{!toCasesTab}" />
+            <apex:actionFunction action="{!toSearchPageURL}" name="toSearchPageAF" rerender="showstate">
+                <apex:param name="firstParam" assignTo="{!SearchStr}" value="" />
+            </apex:actionFunction>
+            <apex:actionFunction name="toDevCenter" action="{!toDevCenter}"/>
+        </apex:form>
+   </div>
+</div>
+<div class="page-b-header-gradient"></div>
+<div class="page-eyebrow "></div>
+
+
+</apex:component>

@@ -1,0 +1,22 @@
+<apex:page controller="zzzResultDetail">
+    <apex:panelGrid columns="2" id="theGrid">
+        <apex:outputText value="Total No. Of. Lead : " />
+        <apex:outputText value="{!leadcount}" />
+    </apex:panelGrid>
+    
+        <apex:panelGrid columns="2">
+        <apex:outputText value="Total No. Of. Opportunities: " />
+        <apex:outputText value="{!oppcount}" />
+    </apex:panelGrid>
+    
+        <apex:panelGrid columns="2" >
+        <apex:outputText value="Total No. Of. Accounts : " />
+        <apex:outputText value="{!AccCount}" />
+    </apex:panelGrid>
+
+        <apex:panelGrid columns="2" >
+        <apex:outputText value="Total No. Of. Contacts : " />
+        <apex:outputText value="{!ConCount}" />
+    </apex:panelGrid>
+    
+</apex:page>

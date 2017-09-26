@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Open_Invoices</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Open Invoices</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Warehouse_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Status__c</field>
+            <operation>notEqual</operation>
+            <value>Closed</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

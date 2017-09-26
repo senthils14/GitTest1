@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <icon>IQ_20_20/IQ_Logo.jpg</icon>
+    <label>IQ 20/20</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom219: TV Widescreen</motif>
+    <page>IQ_Main_Page</page>
+</CustomTab>
